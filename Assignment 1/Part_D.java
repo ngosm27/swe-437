@@ -24,6 +24,10 @@ public class Part_D {
     public static <E> Vector<E> union(Vector<E> a, Vector<E> b) {
         Vector<E> res = new Vector<>();
 
+        // return if a or b is null
+        if (a == null || b == null)
+            return null;
+
         // copy all elements in vector 'a' into vector 'res'; ignore dupes
         for (int i = 0; i < a.size(); i++) {
             if (!res.contains(a.elementAt(i))) {
