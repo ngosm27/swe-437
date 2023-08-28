@@ -21,7 +21,7 @@ public class Assignment_1a{
     }
 	
     public static Vector union(Vector a, Vector b){
-	    Vector res = new Vector();
+        Vector res = new Vector();
 
         // copy all elements in vector 'a' into vector 'res'; ignore dupes
         for(int i = 0; i < a.size(); i++){
@@ -36,6 +36,6 @@ public class Assignment_1a{
             }
         }
 
-	    return res;
+        return res;
 	}
 }
