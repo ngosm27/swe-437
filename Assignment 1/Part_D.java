@@ -20,7 +20,7 @@ public class Part_D {
         }
     }
 
-    // re-defined method signature to clarfiy types
+    // re-defined method signature to clarify types
     public static <E> Vector<E> union(Vector<E> a, Vector<E> b) {
         Vector<E> res = new Vector<>();
 
