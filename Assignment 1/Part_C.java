@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-public class Part_A {
+public class Part_C {
 
     public static void main(String[] args) {
         Vector<Integer> a = new Vector<>();
