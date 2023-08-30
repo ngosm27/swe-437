@@ -26,7 +26,7 @@ public class Part_D {
         Set<E> res = new HashSet<>();
 
         // return if a and b is null
-        if (a == null && b == null)
+        if (a == null || b == null)
             return null;
 
         // copy all elements in Set 'a' into Set 'res'
