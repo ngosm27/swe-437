@@ -15,8 +15,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 
 public class ConversionGui extends Application {
-    final TextField[] imperialTextFields = new TextField[7];
-    final TextField[] metricTextFields = new TextField[7];
+    final int conversionCount = 7;
+    final TextField[] imperialTextFields = new TextField[conversionCount];
+    final TextField[] metricTextFields = new TextField[conversionCount];
 
     public static void main(String[] args) {
         launch(args);
