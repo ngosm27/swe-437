@@ -31,7 +31,7 @@ public class ConversionGui extends Application {
 
         // grid of text fields
         String[] imperialUnits = new String[] {
-                "Fahrenheit (F�)",
+                "Fahrenheit (F°)",
                 "Inch (in)",
                 "Feet (ft)",
                 "Mile (mi)",
@@ -40,7 +40,7 @@ public class ConversionGui extends Application {
                 "Pound (lb)"
         };
         String[] metricUnits = new String[] {
-                "Celsius (C�)",
+                "Celsius (C°)",
                 "Centimeter (cm)",
                 "Meter (m)",
                 "Kilometer (km)",
