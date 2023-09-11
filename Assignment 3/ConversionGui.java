@@ -13,10 +13,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 
+/** This program is a gui, based off of conversion.java by Professor Offut.
+  * @Author Susan Ngo & Calvin Tran
+  * Ver 2.0
+  */
 public class ConversionGui extends Application {
     final int conversionCount = 7;
     final TextField[] imperialTextFields = new TextField[conversionCount];
     final TextField[] metricTextFields = new TextField[conversionCount];
+    final ToggleGroup group = new ToggleGroup();
 
     public static void main(String[] args) {
         launch(args);
@@ -27,8 +32,8 @@ public class ConversionGui extends Application {
         primaryStage.setTitle("Measurement Conversion");
 
         VBox root = new VBox(10);
-
-        // grid of text fields
+        
+        // define all units with their abbreviations
         String[] imperialUnits = new String[] {
             "Fahrenheit (\u00B0" + "F)",
             "Inch (in)",
@@ -48,8 +53,8 @@ public class ConversionGui extends Application {
             "Kilogram (kg)"
         };
 
+        // grid of text fields
         GridPane gridpane = new GridPane();
-
         for (int i = 0; i < metricUnits.length; i++) {
             TextField tf_imperial = new TextField();
             TextField tf_metric = new TextField();
@@ -92,7 +97,6 @@ public class ConversionGui extends Application {
         radioGrp.getChildren().addAll(new Label("   Number of decimal places: "));
 
         // option to let users select the number of decimal places to show (0-4)
-        final ToggleGroup group = new ToggleGroup();
         RadioButton[] decOption = new RadioButton[5];
         for (int i = 0; i < 5; i++) {
             decOption[i] = new RadioButton();
@@ -123,7 +127,13 @@ public class ConversionGui extends Application {
         }
     }
 
+    // initiate conversion
+    // convert text fields into strings and call the convertX2Y method
     public void convert() {
+        RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
+        String selectedValue = selectedRadioButton.getText();
+        int numDecPoints = Integer.parseInt(selectedValue);
+        
         // store all user input from imperial text fields
         String[] imperialAsStr = new String[conversionCount];
         for(int i = 0; i < conversionCount; i++){
@@ -132,7 +142,7 @@ public class ConversionGui extends Application {
             // check if field is valid
             // process all imperial -> metric conversion results
             if (imperialAsStr[i].length() > 0) {
-                metricTextFields[i].setText(String.valueOf(convertX2Y(true, i, imperialAsStr[i], 0)));
+                metricTextFields[i].setText(String.valueOf(convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
             }
         }
 
@@ -144,12 +154,13 @@ public class ConversionGui extends Application {
             // check if field is valid
             // process all metric -> imperial conversion results
             if (metricAsStr[i].length() > 0) {
-                imperialTextFields[i].setText(String.valueOf(convertX2Y(false, i, metricAsStr[i], 0)));
+                imperialTextFields[i].setText(String.valueOf(convertX2Y(false, i, metricAsStr[i], numDecPoints)));
             }
         }
     }
     
-    private float convertX2Y(boolean isImperial2Metric, int index, String str, int numOfDecimals){
+    // convert unit and format end result
+    private float convertX2Y(boolean isImperial2Metric, int index, String str, int numDecPoints){
         float num1, num2 = 0; // temporary variables
         int n; // temporary variable
         
