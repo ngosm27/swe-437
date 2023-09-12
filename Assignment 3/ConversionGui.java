@@ -15,13 +15,40 @@ import javafx.scene.layout.GridPane;
 
 /** This program is a gui, based off of conversion.java by Professor Offut.
   * @Author Susan Ngo & Calvin Tran
-  * Ver 2.0
+  * ver 2.0
+  *
+  * NOTES: 
+  *     - we need to change name of imperial/metric since we're converting hour/sec which don't belong in either :/
+  *     - rounding to x numOfDecimal places is incomplete
   */
 public class ConversionGui extends Application {
-    final int conversionCount = 7;
-    final TextField[] imperialTextFields = new TextField[conversionCount];
-    final TextField[] metricTextFields = new TextField[conversionCount];
-    final ToggleGroup group = new ToggleGroup();
+
+    // define all units with their abbreviations
+    final String[] imperialUnits = new String[] {
+        "Fahrenheit (\u00B0" + "F)",
+        "Inch (in)",
+        "Feet (ft)",
+        "Mile (mi)",
+        "Gallon (gal)",
+        "Ounce (oz)",
+        "Pound (lb)",
+        "Hour (hr)"
+    };
+    final String [] metricUnits = new String[] {
+        "Celsius (\u00B0" + "C)",
+        "Centimeter (cm)",
+        "Meter (m)",
+        "Kilometer (km)",
+        "Liter (L)",
+        "Gram (g)",
+        "Kilogram (kg)",
+        "Second (s)"
+    };
+    
+    final int conversionCount = Math.min(imperialUnits.length, metricUnits.length); // number of conversion options
+    final TextField[] imperialTextFields = new TextField[conversionCount];          // text fields of first column of units 
+    final TextField[] metricTextFields = new TextField[conversionCount];            // text fields of second column of units
+    final ToggleGroup group = new ToggleGroup();                                    // group of radio buttons
 
     public static void main(String[] args) {
         launch(args);
@@ -32,28 +59,8 @@ public class ConversionGui extends Application {
         primaryStage.setTitle("Measurement Conversion");
 
         VBox root = new VBox(10);
-        
-        // define all units with their abbreviations
-        String[] imperialUnits = new String[] {
-            "Fahrenheit (\u00B0" + "F)",
-            "Inch (in)",
-            "Feet (ft)",
-            "Mile (mi)",
-            "Gallon (gal)",
-            "Ounce (oz)",
-            "Pound (lb)"
-        };
-        String[] metricUnits = new String[] {
-            "Celsius (\u00B0" + "C)",
-            "Centimeter (cm)",
-            "Meter (m)",
-            "Kilometer (km)",
-            "Liter (L)",
-            "Gram (g)",
-            "Kilogram (kg)"
-        };
 
-        // grid of text fields
+        // grid of text fields, use the units w/ abbreviations as label
         GridPane gridpane = new GridPane();
         for (int i = 0; i < metricUnits.length; i++) {
             TextField tf_imperial = new TextField();
@@ -72,8 +79,7 @@ public class ConversionGui extends Application {
         // convert button performs the conversion
         Button convertBtn = new Button();
         convertBtn.setText("Convert");
-        convertBtn.setOnAction(new EventHandler < ActionEvent > () {
-
+        convertBtn.setOnAction(new EventHandler <ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 convert();
@@ -83,7 +89,7 @@ public class ConversionGui extends Application {
         // clear button clears the fields
         Button clearBtn = new Button();
         clearBtn.setText("Clear Form");
-        clearBtn.setOnAction(new EventHandler < ActionEvent > () {
+        clearBtn.setOnAction(new EventHandler <ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 clearFields();
@@ -101,8 +107,8 @@ public class ConversionGui extends Application {
         for (int i = 0; i < 5; i++) {
             decOption[i] = new RadioButton();
 
-            // set default to be 0 decimal places
-            if (i == 0) decOption[i].setSelected(true);
+            // set default selected radio button to be 2 decimal places
+            if (i == 2) decOption[i].setSelected(true);
 
             decOption[i].setText("" + i);
             decOption[i].setToggleGroup(group);
@@ -115,7 +121,7 @@ public class ConversionGui extends Application {
 
         root.getChildren().addAll(gridpane, new VBox(10), radioGrp, btnGrp);
 
-        primaryStage.setScene(new Scene(root, 600, 255));
+        primaryStage.setScene(new Scene(root, 600, 285));
         primaryStage.show();
     }
     
@@ -134,24 +140,20 @@ public class ConversionGui extends Application {
         String selectedValue = selectedRadioButton.getText();
         int numDecPoints = Integer.parseInt(selectedValue);
         
-        // store all user input from imperial text fields
+        // store all user input from imperial and metric text fields
         String[] imperialAsStr = new String[conversionCount];
+        String[] metricAsStr = new String[conversionCount];
+        
         for(int i = 0; i < conversionCount; i++){
+            // extract strings
             imperialAsStr[i] = imperialTextFields[i].getText();
+            metricAsStr[i] = metricTextFields[i].getText();
             
-            // check if field is valid
             // process all imperial -> metric conversion results
             if (imperialAsStr[i].length() > 0) {
                 metricTextFields[i].setText(String.valueOf(convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
             }
-        }
-
-        // store all user input from metric text fields
-        String[] metricAsStr = new String[conversionCount];
-        for(int i = 0; i < conversionCount; i++){
-            metricAsStr[i] = metricTextFields[i].getText();
             
-            // check if field is valid
             // process all metric -> imperial conversion results
             if (metricAsStr[i].length() > 0) {
                 imperialTextFields[i].setText(String.valueOf(convertX2Y(false, i, metricAsStr[i], numDecPoints)));
@@ -161,8 +163,8 @@ public class ConversionGui extends Application {
     
     // convert unit and format end result
     private float convertX2Y(boolean isImperial2Metric, int index, String str, int numDecPoints){
-        float num1, num2 = 0; // temporary variables
-        int n; // temporary variable
+        float num1, num2 = 0;       // temporary variables
+        int n;                      // temporary variable
         
         // round to 2 digits past decimal
         num1 = (Float.valueOf(str).floatValue());
@@ -178,6 +180,7 @@ public class ConversionGui extends Application {
             else if(index == 4) num2 = (float)(num1 * 3.785);               // gallon to liter
             else if(index == 5) num2 = (float)(num1 * 28.35);               // ounce to gram
             else if(index == 6) num2 = (float)(num1 * 0.4536);              // pound to kilogram
+            else if(index == 7) num2 = (float)(num1 * 3600);                // hour to second
         }
         else{
             if(index == 0) num2 = (float)((num1 * 9.0 / 5.0) + 32.0);       // celsius to farenheit
@@ -187,6 +190,7 @@ public class ConversionGui extends Application {
             else if(index == 4) num2 = (float)(num1 / 3.785);               // liter to gallon
             else if(index == 5) num2 = (float)(num1 / 28.35);               // gram to ounce
             else if(index == 6) num2 = (float)(num1 * 2.205);               // kilogram to pound
+            else if(index == 7) num2 = (float)(num1 / 3600);                // second to hour
         }
         
         // back to 2 digits
