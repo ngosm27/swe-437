@@ -14,13 +14,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 
 /** This program is a gui, based off of conversion.java by Professor Offut.
-  * @Author Susan Ngo & Calvin Tran
-  * ver 2.0
-  *
-  * NOTES: 
-  *     - we need to change name of imperial/metric since we're converting hour/sec which don't belong in either :/
-  *     - rounding to x numOfDecimal places is incomplete
-  */
+  * @author Susan Ngo & Calvin Tran
+  * @version 2.0 */// 
+//  - we need to change name of imperial/metric since we're converting hour/sec which don't belong in either :/
+//  - rounding to x numOfDecimal places is incomplete */
 public class ConversionGui extends Application {
 
     // define all units with their abbreviations
