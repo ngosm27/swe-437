@@ -148,12 +148,22 @@ public class ConversionGui extends Application {
             
             // process all imperial -> metric conversion results
             if (imperialAsStr[i].length() > 0) {
-                metricTextFields[i].setText(String.valueOf(convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
+                if (numDecPoints == 0) {
+                    metricTextFields[i].setText(String.valueOf((int) convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
+                }
+                else {
+                    metricTextFields[i].setText(String.valueOf(convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
+                }
             }
             
             // process all metric -> imperial conversion results
             if (metricAsStr[i].length() > 0) {
-                imperialTextFields[i].setText(String.valueOf(convertX2Y(false, i, metricAsStr[i], numDecPoints)));
+                if (numDecPoints == 0) {
+                    imperialTextFields[i].setText(String.valueOf((int) convertX2Y(false, i, metricAsStr[i], numDecPoints)));
+                }
+                else {
+                    imperialTextFields[i].setText(String.valueOf(convertX2Y(false, i, metricAsStr[i], numDecPoints)));
+                }
             }
         }
     }
@@ -163,10 +173,10 @@ public class ConversionGui extends Application {
         float num1, num2 = 0;       // temporary variables
         int n;                      // temporary variable
         
-        // round to 2 digits past decimal
+        // round to N digits past decimal
         num1 = (Float.valueOf(str).floatValue());
-        n = Math.round(num1 * (float) 100.0);
-        num1 = (float)(n / (float) 100.0);
+        n = Math.round(num1 * (float) Math.pow(10.0, (double) numDecPoints));
+        num1 = (float)(n / (float) Math.pow(10.0, (double) numDecPoints));
         
         // perform the correlating conversion; indicated by the index
         if(isImperial2Metric){
@@ -190,9 +200,9 @@ public class ConversionGui extends Application {
             else if(index == 7) num2 = (float)(num1 / 3600);                // second to hour
         }
         
-        // back to 2 digits
-        n = Math.round(num2 * (float) 100.0);
-        num2 = (float)(n / (float) 100.0);
+        // back to N digits
+        n = Math.round(num2 * (float) Math.pow(10.0, (double) numDecPoints));
+        num2 = (float)(n / (float) Math.pow(10.0, (double) numDecPoints));
         
         return (num2);
     }
