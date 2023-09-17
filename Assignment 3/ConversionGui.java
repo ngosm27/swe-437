@@ -152,12 +152,12 @@ public class ConversionGui extends Application {
 
             // process all imperial -> metric conversion results
             if (imperialAsStr[i].length() > 0) {
-                metricTextFields[i].setText(df.format(convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
+                metricTextFields[i].setText(df.format(convertX2Y(true, i, imperialAsStr[i])));
             }
             
             // process all metric -> imperial conversion results
             if (metricAsStr[i].length() > 0) {
-                imperialTextFields[i].setText(df.format(convertX2Y(false, i, metricAsStr[i], numDecPoints)));
+                imperialTextFields[i].setText(df.format(convertX2Y(false, i, metricAsStr[i])));
             }
         }
     }
