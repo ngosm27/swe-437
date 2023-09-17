@@ -16,9 +16,8 @@ import java.text.DecimalFormat;
 
 /** This program is a gui, based off of conversion.java by Professor Offut.
   * @author Susan Ngo & Calvin Tran
-  * @version 2.0 */// 
-//  - we need to change name of imperial/metric since we're converting hour/sec which don't belong in either :/
-//  - rounding to x numOfDecimal places is incomplete */
+  * @version 2.0
+  */
 public class ConversionGui extends Application {
 
     // define all units with their abbreviations
@@ -168,10 +167,7 @@ public class ConversionGui extends Application {
         float num1, num2 = 0;       // temporary variables
         int n;                      // temporary variable
         
-        // round to N digits past decimal
         num1 = (Float.valueOf(str).floatValue());
-        n = Math.round(num1 * (float) Math.pow(10.0, (double) numDecPoints));
-        num1 = (float)(n / (float) Math.pow(10.0, (double) numDecPoints));
         
         // perform the correlating conversion; indicated by the index
         if(isImperial2Metric){
@@ -194,10 +190,6 @@ public class ConversionGui extends Application {
             else if(index == 6) num2 = (float)(num1 * 2.205);               // kilogram to pound
             else if(index == 7) num2 = (float)(num1 / 3600);                // second to hour
         }
-        
-        // back to N digits
-        n = Math.round(num2 * (float) Math.pow(10.0, (double) numDecPoints));
-        num2 = (float)(n / (float) Math.pow(10.0, (double) numDecPoints));
         
         return (num2);
     }
