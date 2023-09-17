@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
+import java.text.DecimalFormat;
 
 /** This program is a gui, based off of conversion.java by Professor Offut.
   * @author Susan Ngo & Calvin Tran
@@ -145,25 +146,19 @@ public class ConversionGui extends Application {
             // extract strings
             imperialAsStr[i] = imperialTextFields[i].getText();
             metricAsStr[i] = metricTextFields[i].getText();
-            
+
+            // Format specifier
+            String[] format = {"#","#.0", "#.00", "#.000", "#.0000"};
+            DecimalFormat df = new DecimalFormat(format[numDecPoints]);
+
             // process all imperial -> metric conversion results
             if (imperialAsStr[i].length() > 0) {
-                if (numDecPoints == 0) {
-                    metricTextFields[i].setText(String.valueOf((int) convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
-                }
-                else {
-                    metricTextFields[i].setText(String.valueOf(convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
-                }
+                metricTextFields[i].setText(df.format(convertX2Y(true, i, imperialAsStr[i], numDecPoints)));
             }
             
             // process all metric -> imperial conversion results
             if (metricAsStr[i].length() > 0) {
-                if (numDecPoints == 0) {
-                    imperialTextFields[i].setText(String.valueOf((int) convertX2Y(false, i, metricAsStr[i], numDecPoints)));
-                }
-                else {
-                    imperialTextFields[i].setText(String.valueOf(convertX2Y(false, i, metricAsStr[i], numDecPoints)));
-                }
+                imperialTextFields[i].setText(df.format(convertX2Y(false, i, metricAsStr[i], numDecPoints)));
             }
         }
     }
