@@ -5,5 +5,5 @@ This repo holds the source code for the SWE 437 Fall 2023 course. The written as
 ## Contributors:
 - Rohina Naderi
 - Susan Ngo, [sngo3@gmu.edu](mailto:sngo3@gmu.edu), [@sky.lily](https://discord.com/users/690659258664222811)
-- Catherine Nguyen
+- Catherine Nguyen, [cnguye91@gmu.edu](mailto:cnguye91@gmu.edu), [@cathyyn](https://discord.com/users/363768084076429315)
 - Calvin Tran
