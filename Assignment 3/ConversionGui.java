@@ -163,7 +163,7 @@ public class ConversionGui extends Application {
     }
     
     // convert unit and format end result
-    private float convertX2Y(boolean isImperial2Metric, int index, String str, int numDecPoints){
+    private float convertX2Y(boolean isImperial2Metric, int index, String str){
         float num1, num2 = 0;       // temporary variables
         int n;                      // temporary variable
         
