@@ -148,7 +148,7 @@ public class ConversionGui extends Application {
             metricAsStr[i] = metricTextFields[i].getText();
 
             // Format specifier
-            String[] format = {"#","#.0", "#.00", "#.000", "#.0000"};
+            String[] format = {"0","0.0", "0.00", "0.000", "0.0000"};
             DecimalFormat df = new DecimalFormat(format[numDecPoints]);
 
             // process all imperial -> metric conversion results
