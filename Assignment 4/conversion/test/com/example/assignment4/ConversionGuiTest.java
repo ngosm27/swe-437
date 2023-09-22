@@ -1,4 +1,4 @@
-package com.example.assignment3_project;
+package com.example.assignment4;
 
 import javafx.application.Application;
 import javafx.application.Platform;

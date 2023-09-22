@@ -1,4 +1,4 @@
-module com.example.assignment3_project {
+module com.example.assignment4 {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,6 +6,6 @@ module com.example.assignment3_project {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.assignment3_project to javafx.fxml;
-    exports com.example.assignment3_project;
+    opens com.example.assignment4 to javafx.fxml;
+    exports com.example.assignment4;
 }
