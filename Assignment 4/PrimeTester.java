@@ -5,21 +5,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class PrimeTester {
-    private ArrayList<Integer> p;
-
-    @Before
-    public void setup() {
-        p = new ArrayList<>();
-    }
-
-    @After
-    public void cleanup() { // Optional to include b/c of garbage collector
-        p = null;
-    }
+    // Assume that p is declared and instantiated 
 
     @Test
-    public void testComputePrime() {
-        p.computePrime(5);  // Compute the first 5 prime numbers
+    public void testComputePrimes() {
+        p.computePrimes(5);  // Compute the first 5 prime numbers
 
         assertTrue("computePrimes failed", p.getFirstPrime() == 2);
         assertTrue("computePrimes failed", p.getNextPrime() == 3);
