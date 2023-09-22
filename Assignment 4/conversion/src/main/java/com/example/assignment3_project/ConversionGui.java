@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 import java.text.DecimalFormat;
@@ -40,8 +41,26 @@ public class ConversionGui extends Application {
     };
 
     final int conversionCount = Math.min(imperialUnits.length, metricUnits.length); // number of conversion options
-    final TextField[] imperialTextFields = new TextField[conversionCount];          // text fields of first column of units
-    final TextField[] metricTextFields = new TextField[conversionCount];            // text fields of second column of units
+    final TextField[] imperialTextFields = new TextField[]{
+            new TextField("fahrenheit"),
+            new TextField("inch"),
+            new TextField("feet"),
+            new TextField("mile"),
+            new TextField("gallon"),
+            new TextField("ounce"),
+            new TextField("pound"),
+            new TextField("hour"),
+    };                                                                              // text fields of first column of units
+    final TextField[] metricTextFields = new TextField[]{
+            new TextField("celsuis"),
+            new TextField("centimeter"),
+            new TextField("meter"),
+            new TextField("kilometer"),
+            new TextField("liter"),
+            new TextField("gram"),
+            new TextField("kilogram"),
+            new TextField("second"),
+    };                                                                              // text fields of second column of units
     final ToggleGroup group = new ToggleGroup();                                    // group of radio buttons
 
     public static void main(String[] args) {
@@ -143,24 +162,24 @@ public class ConversionGui extends Application {
             imperialAsStr[i] = imperialTextFields[i].getText();
             metricAsStr[i] = metricTextFields[i].getText();
 
-            // Format specifier
-            String[] format = {"0", "0.0", "0.00", "0.000", "0.0000"};
-            DecimalFormat df = new DecimalFormat(format[numDecPoints]);
-
             // process all imperial -> metric conversion results
             if (imperialAsStr[i].length() > 0) {
-                metricTextFields[i].setText(df.format(convertX2Y(true, i, imperialAsStr[i])));
+                float metricConvValue = convertX2Y(true, i, imperialAsStr[i]);
+                //System.out.println("index " + i + ": " + metricConvValue);
+                metricTextFields[i].setText(formatToDecimalPlaces(numDecPoints, metricConvValue));
             }
 
             // process all metric -> imperial conversion results
             if (metricAsStr[i].length() > 0) {
-                imperialTextFields[i].setText(df.format(convertX2Y(false, i, metricAsStr[i])));
+                float imperialConvValue = convertX2Y(false, i, metricAsStr[i]);
+                System.out.println("index " + i + ": " + imperialConvValue);
+                imperialTextFields[i].setText(formatToDecimalPlaces(numDecPoints, imperialConvValue));
             }
         }
     }
 
     // convert unit and format end result
-    private float convertX2Y(boolean isImperial2Metric, int index, String str) {
+    protected float convertX2Y(boolean isImperial2Metric, int index, String str) {
         float num1, num2 = 0;       // temporary variables
         int n;                      // temporary variable
 
@@ -188,5 +207,14 @@ public class ConversionGui extends Application {
         }
 
         return (num2);
+    }
+
+    // format conversion result to specified number of decimal places
+    protected String formatToDecimalPlaces(int numDecPoints, float value){
+        // Format specifier
+        String[] format = {"0", "0.0", "0.00", "0.000", "0.0000"};
+        DecimalFormat df = new DecimalFormat(format[numDecPoints]);
+
+        return df.format(value);
     }
 }
