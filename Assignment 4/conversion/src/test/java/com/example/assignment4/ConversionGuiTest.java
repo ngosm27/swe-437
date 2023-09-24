@@ -175,7 +175,7 @@ class ConversionGuiTest {
     // Observability: print out "Result should display 0 decimal place" if the test fails
     // Controllability: gui.formatToDecimalPlaces(0, (float)378.5)
     @Test
-    void ZeroDecimalPlaceTest() {
+    void zeroDecimalPlaceTest() {
         assertEquals("378", gui.formatToDecimalPlaces(0, (float)378.5), "Result should display 0 decimal place");
     }
 
@@ -183,7 +183,7 @@ class ConversionGuiTest {
     // Observability: print out "Result should display 1 decimal place" if the test fails
     // Controllability: gui.formatToDecimalPlaces(1, (float)378.5)
     @Test
-    void OneDecimalPlaceTest() {
+    void oneDecimalPlaceTest() {
         assertEquals("378.5", gui.formatToDecimalPlaces(1, (float)378.5), "Result should display 1 decimal place");
     }
 
@@ -191,7 +191,7 @@ class ConversionGuiTest {
     // Observability: print out "Result should display 2 decimal place" if the test fails
     // Controllability: gui.formatToDecimalPlaces(2, (float)378.5)
     @Test
-    void TwoDecimalPlaceTest() {
+    void twoDecimalPlaceTest() {
         assertEquals("378.50", gui.formatToDecimalPlaces(2, (float)378.5), "Result should display 2 decimal place");
     }
 
@@ -199,7 +199,7 @@ class ConversionGuiTest {
     // Observability: print out "Result should display 3 decimal place" if the test fails
     // Controllability: gui.formatToDecimalPlaces(3, (float)378.5)
     @Test
-    void ThreeDecimalPlaceTest() {
+    void threeDecimalPlaceTest() {
         assertEquals("378.500", gui.formatToDecimalPlaces(3, (float)378.5), "Result should display 3 decimal place");
     }
 
@@ -207,7 +207,7 @@ class ConversionGuiTest {
     // Observability: print out "Result should display 4 decimal place" if the test fails
     // Controllability: gui.formatToDecimalPlaces(4, (float)378.5)
     @Test
-    void FourDecimalPlaceTest() {
+    void fourDecimalPlaceTest() {
         assertEquals("378.5000", gui.formatToDecimalPlaces(4, (float)378.5), "Result should display 4 decimal place");
     }
 }
