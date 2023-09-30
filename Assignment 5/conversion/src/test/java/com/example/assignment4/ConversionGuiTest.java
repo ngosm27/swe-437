@@ -171,7 +171,9 @@ class ConversionGuiTest {
         assertTrue((float)0.027777778 == gui.convertX2Y(false, 7, "100.0"), "sec to hour conversion failed");
     }
 
-    // ****************************************************************
+    // ***************************************************************************************************
+    //                                              NEW TESTS 
+    // ***************************************************************************************************
     @Test
     void convertMph2KphTest() {
         assertTrue((float)160.934 == gui.convertX2Y(true, 8, "100.0"), "mph to kph conversion failed");
@@ -192,7 +194,9 @@ class ConversionGuiTest {
         assertTrue((float)373.15 == gui.convertX2Y(false, 9, "100.0"), "celsius to kelvin conversion failed");
     }
 
-    // =======================================================
+    // ***************************************************************************************************
+    //                                           END OF NEW TESTS                                             
+    // ***************************************************************************************************
 
     // test that result displays 0 decimal places
     // Observability: print out "Result should display 0 decimal place" if the test fails
