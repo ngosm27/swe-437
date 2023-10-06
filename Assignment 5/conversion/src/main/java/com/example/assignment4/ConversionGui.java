@@ -203,8 +203,8 @@ public class ConversionGui extends Application {
             else if (index == 5) num2 = (float) (num1 * 28.35);               // ounce to gram
             else if (index == 6) num2 = (float) (num1 * 0.4536);              // pound to kilogram
             else if (index == 7) num2 = (float) (num1 * 3600);                // hour to second
-            else if (index == 8) num2 = -1;                                   // miles per hour to kilometers per hour [TODO]
-            else if (index == 9) num2 = -1;                                   // kelvin to celsius  [TODO]
+            else if (index == 8) num2 = (float) (num1 * 1.609344);            // miles per hour to kilometers per hour [TODO]
+            else if (index == 9) num2 = (float) (num1 - 273.15);              // kelvin to celsius  [TODO]
         } else {
             if (index == 0) num2 = (float) ((num1 * 9.0 / 5.0) + 32.0);       // celsius to fahrenheit
             else if (index == 1) num2 = (float) (num1 * 0.3937);              // centimeter to inch
@@ -214,8 +214,8 @@ public class ConversionGui extends Application {
             else if (index == 5) num2 = (float) (num1 / 28.35);               // gram to ounce
             else if (index == 6) num2 = (float) (num1 * 2.205);               // kilogram to pound
             else if (index == 7) num2 = (float) (num1 / 3600);                // second to hour
-            else if (index == 8) num2 = -1;                                   // kilometers per hour to miles per hour [TODO]
-            else if (index == 9) num2 = -1;                                   // celsius to kelvin [TODO]
+            else if (index == 8) num2 = (float) (num1 / 1.609344);            // kilometers per hour to miles per hour [TODO]
+            else if (index == 9) num2 = (float) (num1 + 273.15);              // celsius to kelvin [TODO]
         }
 
         return (num2);
