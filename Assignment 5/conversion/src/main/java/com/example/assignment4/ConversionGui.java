@@ -195,16 +195,15 @@ public class ConversionGui extends Application {
 
         // perform the correlating conversion; indicated by the index
         if (isImperial2Metric) {
-            if (index == 0) num2 = (float) (((num1 - 32.0) * 5.0) / 9.0);     // fahrenheit to celsius
-            else if (index == 1) num2 = (float) (num1 * 2.54);                // inch to centimeter
-            else if (index == 2) num2 = (float) (num1 * 0.3048);              // feet to meter
-            else if (index == 3) num2 = (float) (num1 * 1.609);               // mile to kilometer
-            else if (index == 4) num2 = (float) (num1 * 3.785);               // gallon to liter
-            else if (index == 5) num2 = (float) (num1 * 28.35);               // ounce to gram
-            else if (index == 6) num2 = (float) (num1 * 0.4536);              // pound to kilogram
-            else if (index == 7) num2 = (float) (num1 * 3600);                // hour to second
-            else if (index == 8) num2 = (float) (num1 * 1.609);        // miles per hour to kilometers per hour
-            else if (index == 9) num2 = (float) (num1 - 273.15);              // kelvin to celsius
+            if (index == 0) num2 = (float) (((num1 - 32.0) * 5.0) / 9.0);           // fahrenheit to celsius
+            else if (index == 1) num2 = (float) (num1 * 2.54);                      // inch to centimeter
+            else if (index == 2) num2 = (float) (num1 * 0.3048);                    // feet to meter
+            else if ((index == 3) || (index == 8)) num2 = (float) (num1 * 1.609);   // mile (per hour) to kilometer (per hour)
+            else if (index == 4) num2 = (float) (num1 * 3.785);                     // gallon to liter
+            else if (index == 5) num2 = (float) (num1 * 28.35);                     // ounce to gram
+            else if (index == 6) num2 = (float) (num1 * 0.4536);                    // pound to kilogram
+            else if (index == 7) num2 = (float) (num1 * 3600);                      // hour to second
+            else if (index == 9) num2 = (float) (num1 - 273.15);                    // kelvin to celsius
         } else {
             if (index == 0) num2 = (float) ((num1 * 9.0 / 5.0) + 32.0);       // celsius to fahrenheit
             else if (index == 1) num2 = (float) (num1 * 0.3937);              // centimeter to inch

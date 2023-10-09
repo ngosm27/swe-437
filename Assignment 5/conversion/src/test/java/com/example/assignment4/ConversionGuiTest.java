@@ -8,6 +8,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+//import conversion.src.main.java.com.example.assignment4.ConversionGui;
+import com.example.assignment4.ConversionGui;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConversionGuiTest {
@@ -175,13 +178,23 @@ class ConversionGuiTest {
     //                                              NEW TESTS
     // ***************************************************************************************************
     @Test
-    void convertMph2KphTest() {
+    void convertMph2KphTest1() {
         validate((float)160.9, true, 8, "100.0", "mph to kph conversion failed");
     }
 
     @Test
-    void convertKph2MphTest() {
+    void convertMph2KphTest2() {
+        validate((float)485.918, true, 8, "302", "mph to kph conversion failed");
+    }
+
+    @Test
+    void convertKph2MphTest1() {
         validate((float)62.14, false, 8, "100.0", "kph to mph conversion failed");
+    }
+
+    @Test
+    void convertKph2MphTest2() {
+        validate((float)187.6628, false, 8, "302", "kph to mph conversion failed");
     }
 
     @Test
@@ -250,6 +263,6 @@ class ConversionGuiTest {
 
     // helper function to asset equals
     void validate(float expected, boolean isImperial, int index, String input, String msg){
-        assertTrue( expected == gui.convertX2Y(isImperial, index, input), msg);
+        assertTrue(expected == gui.convertX2Y(isImperial, index, input), msg);
     }
 }
