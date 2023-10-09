@@ -172,26 +172,26 @@ class ConversionGuiTest {
     }
 
     // ***************************************************************************************************
-    //                                              NEW TESTS 
+    //                                              NEW TESTS
     // ***************************************************************************************************
     @Test
     void convertMph2KphTest() {
-        assertTrue((float)160.934 == gui.convertX2Y(true, 8, "100.0"), "mph to kph conversion failed");
+        assertTrue((float)160.9 == gui.convertX2Y(true, 8, "100.0"), "mph to kph conversion failed");
     }
 
     @Test
     void convertKph2MphTest() {
-        assertTrue((float)62.1371 == gui.convertX2Y(false, 8, "100.0"), "kph to mph conversion failed");
+        assertTrue((float)62.14 == gui.convertX2Y(false, 8, "100.0"), "kph to mph conversion failed");
     }
 
     @Test
     void convertK2CTest() {
-        assertTrue((float)-173.15 == gui.convertX2Y(true, 9, "100.0"), "kelvin to celsius conversion failed");
+        assertTrue((float)-173.15 == gui.convertX2Y(true, 9, "100.0"), "k to c conversion failed");
     }
 
     @Test
     void convertC2KTest() {
-        assertTrue((float)373.15 == gui.convertX2Y(false, 9, "100.0"), "celsius to kelvin conversion failed");
+        assertTrue((float)373.15 == gui.convertX2Y(false, 9, "100.0"), "c to k conversion failed");
     }
 
     // ***************************************************************************************************

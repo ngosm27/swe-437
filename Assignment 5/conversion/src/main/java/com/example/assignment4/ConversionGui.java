@@ -142,7 +142,7 @@ public class ConversionGui extends Application {
 
         root.getChildren().addAll(gridpane, new VBox(10), radioGrp, btnGrp);
 
-        primaryStage.setScene(new Scene(root, 600, 285));
+        primaryStage.setScene(new Scene(root, 650, 335));
         primaryStage.show();
     }
 
@@ -203,8 +203,8 @@ public class ConversionGui extends Application {
             else if (index == 5) num2 = (float) (num1 * 28.35);               // ounce to gram
             else if (index == 6) num2 = (float) (num1 * 0.4536);              // pound to kilogram
             else if (index == 7) num2 = (float) (num1 * 3600);                // hour to second
-            else if (index == 8) num2 = -1;                                   // miles per hour to kilometers per hour [TODO]
-            else if (index == 9) num2 = -1;                                   // kelvin to celsius  [TODO]
+            else if (index == 8) num2 = (float) (num1 * 1.609);        // miles per hour to kilometers per hour
+            else if (index == 9) num2 = (float) (num1 - 273.15);              // kelvin to celsius
         } else {
             if (index == 0) num2 = (float) ((num1 * 9.0 / 5.0) + 32.0);       // celsius to fahrenheit
             else if (index == 1) num2 = (float) (num1 * 0.3937);              // centimeter to inch
@@ -214,8 +214,8 @@ public class ConversionGui extends Application {
             else if (index == 5) num2 = (float) (num1 / 28.35);               // gram to ounce
             else if (index == 6) num2 = (float) (num1 * 2.205);               // kilogram to pound
             else if (index == 7) num2 = (float) (num1 / 3600);                // second to hour
-            else if (index == 8) num2 = -1;                                   // kilometers per hour to miles per hour [TODO]
-            else if (index == 9) num2 = -1;                                   // celsius to kelvin [TODO]
+            else if (index == 8) num2 = (float) (num1 * 0.6214);              // kilometers per hour to miles per hour
+            else if (index == 9) num2 = (float) (num1 + 273.15);              // celsius to kelvin
         }
 
         return (num2);
