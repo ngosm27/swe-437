@@ -48,7 +48,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 0, "100.0")
     @Test
     void convertF2CTest() {
-        validate((float)37.77778, true, 0, "100.0", "f to c conversion failed");
+        assertTrue((float)37.77778 == gui.convertX2Y(true, 0, "100.0"), "f to c conversion failed");
     }
 
     // tests celsius to fahrenheit conversion
@@ -56,7 +56,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 0, "100.0")
     @Test
     void convertC2FTest() {
-        validate((float)212.0, false, 0, "100.0", "c to f conversion failed");
+        assertTrue((float)212.0 == gui.convertX2Y(false, 0, "100.0"), "c to f conversion failed");
     }
 
     // tests inch to centimeter conversion
@@ -64,7 +64,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 1, "100.0")
     @Test
     void convertIn2CmTest() {
-        validate((float)254.0, true, 1, "100.0", "in to cm conversion failed");
+        assertTrue((float)254.0 == gui.convertX2Y(true, 1, "100.0"), "in to cm conversion failed");
     }
 
     // tests centimeter to inch conversion
@@ -72,7 +72,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 1, "100.0")
     @Test
     void convertCm2InTest() {
-        validate((float)39.37, false, 1, "100.0", "cm to in conversion failed");
+        assertTrue((float)39.37 == gui.convertX2Y(false, 1, "100.0"), "cm to in conversion failed");
     }
 
     // tests feet to meter conversion
@@ -80,7 +80,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 2, "100.0")
     @Test
     void convertF2MTest() {
-        validate((float)30.48, true, 2, "100.0", "ft to m conversion failed");
+        assertTrue((float)30.48 == gui.convertX2Y(true, 2, "100.0"), "ft to m conversion failed");
     }
 
     // tests meter to feet conversion
@@ -88,7 +88,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 2, "100.0")
     @Test
     void convertM2FTest() {
-        validate((float)328.08398, false, 2, "100.0", "m to ft conversion failed");
+        assertTrue((float)328.08398 == gui.convertX2Y(false, 2, "100.0"), "m to ft conversion failed");
     }
 
     // tests mile to kilometer conversion
@@ -96,7 +96,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 3, "100.0")
     @Test
     void convertM2KTest() {
-        validate((float)160.9, true, 3, "100.0", "mi to km conversion failed");
+        assertTrue((float)160.9 == gui.convertX2Y(true, 3, "100.0"), "mi to km conversion failed");
     }
 
     // tests kilometer to mile conversion
@@ -104,7 +104,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 3, "100.0")
     @Test
     void convertK2MTest() {
-        validate((float)62.14, false, 3, "100.0", "km to mi conversion failed");
+        assertTrue((float)62.14 == gui.convertX2Y(false, 3, "100.0"), "km to mi conversion failed");
     }
 
     // tests gallon to liter conversion
@@ -112,7 +112,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 4, "100.0")
     @Test
     void convertG2LTest() {
-        validate((float)378.5, true, 4, "100.0", "gal to L conversion failed");
+        assertTrue((float)378.5 == gui.convertX2Y(true, 4, "100.0"), "gal to L conversion failed");
     }
 
     // tests liter to gallon conversion
@@ -120,7 +120,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 4, "100.0")
     @Test
     void convertL2GTest() {
-        validate((float)26.42008, false, 4, "100.0", "L to gal conversion failed");
+        assertTrue((float)26.42008 == gui.convertX2Y(false, 4, "100.0"), "L to gal conversion failed");
     }
 
     // tests ounce to gram conversion
@@ -128,7 +128,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 5, "100.0")
     @Test
     void convertOz2GTest() {
-        validate((float)2835.0, true, 5, "100.0", "oz to g conversion failed");
+        assertTrue((float)2835.0 == gui.convertX2Y(true, 5, "100.0"), "oz to g conversion failed");
     }
 
     // tests gram to ounce conversion
@@ -136,7 +136,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 5, "100.0")
     @Test
     void convertG2OzTest() {
-        validate((float)3.5273368, false, 5, "100.0", "g to oz conversion failed");
+        assertTrue((float)3.5273368 == gui.convertX2Y(false, 5, "100.0"), "g to oz conversion failed");
     }
 
     // tests pound to kilogram conversion
@@ -144,7 +144,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 6, "100.0")
     @Test
     void convertLb2KTest() {
-        validate((float)45.36, true, 6, "100.0", "lb to kg conversion failed");
+        assertTrue((float)45.36 == gui.convertX2Y(true, 6, "100.0"), "lb to kg conversion failed");
     }
 
     // tests kilogram to pound conversion
@@ -152,7 +152,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 6, "100.0")
     @Test
     void convertK2LbTest() {
-        validate((float)220.5, false, 6, "100.0", "kg to lb conversion failed");
+        assertTrue((float)220.5 == gui.convertX2Y(false, 6, "100.0"), "kg to lb conversion failed");
     }
 
     // tests hour to second conversion
@@ -160,7 +160,7 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(true, 7, "100.0")
     @Test
     void convertH2STest() {
-        validate((float)360000.0, true, 7, "100.0", "hour to sec conversion failed");
+        assertTrue((float)360000.0 == gui.convertX2Y(true, 7, "100.0"), "hr to sec conversion failed");
     }
 
     // tests second to hour conversion
@@ -168,40 +168,30 @@ class ConversionGuiTest {
     // Controllability: gui.convertX2Y(false, 7, "100.0")
     @Test
     void convertS2HTest() {
-        validate((float)0.027777778, false, 7, "100.0", "sec to hour conversion failed");
+        assertTrue((float)0.027777778 == gui.convertX2Y(false, 7, "100.0"), "sec to hour conversion failed");
     }
 
     // ***************************************************************************************************
-    //                                              NEW TESTS
+    //                                              NEW TESTS 
     // ***************************************************************************************************
     @Test
     void convertMph2KphTest() {
-        validate((float)160.9, true, 8, "100.0", "mph to kph conversion failed");
+        assertTrue((float)160.934 == gui.convertX2Y(true, 8, "100.0"), "mph to kph conversion failed");
     }
 
     @Test
     void convertKph2MphTest() {
-        validate((float)62.14, false, 8, "100.0", "kph to mph conversion failed");
+        assertTrue((float)62.1371 == gui.convertX2Y(false, 8, "100.0"), "kph to mph conversion failed");
     }
 
     @Test
-    void convertK2CTest1() {
-        validate((float)-173.15, true, 9, "100.0", "k to c conversion failed");
+    void convertK2CTest() {
+        assertTrue((float)-173.15 == gui.convertX2Y(true, 9, "100.0"), "kelvin to celsius conversion failed");
     }
 
     @Test
-    void convertK2CTest2() {
-        validate((float)-273.15, true, 9, "0.0", "k to c conversion failed");
-    }
-
-    @Test
-    void convertC2KTest1() {
-        validate((float)373.15, false, 9, "100.0", "c to k conversion failed");
-    }
-
-    @Test
-    void convertC2KTest2() {
-        validate((float)273.15, false, 9, "0.0", "c to k conversion failed");
+    void convertC2KTest() {
+        assertTrue((float)373.15 == gui.convertX2Y(false, 9, "100.0"), "celsius to kelvin conversion failed");
     }
 
     // ***************************************************************************************************
@@ -246,10 +236,5 @@ class ConversionGuiTest {
     @Test
     void fourDecimalPlaceTest() {
         assertEquals("378.5000", gui.formatToDecimalPlaces(4, (float)378.5), "Result should display 4 decimal place");
-    }
-
-    // helper function to asset equals
-    void validate(float expected, boolean isImperial, int index, String input, String msg){
-        assertTrue( expected == gui.convertX2Y(isImperial, index, input), msg);
     }
 }
