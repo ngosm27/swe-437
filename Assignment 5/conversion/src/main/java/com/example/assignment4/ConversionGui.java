@@ -205,16 +205,15 @@ public class ConversionGui extends Application {
             else if (index == 7) num2 = (float) (num1 * 3600);                      // hour to second
             else if (index == 9) num2 = (float) (num1 - 273.15);                    // kelvin to celsius
         } else {
-            if (index == 0) num2 = (float) ((num1 * 9.0 / 5.0) + 32.0);       // celsius to fahrenheit
-            else if (index == 1) num2 = (float) (num1 * 0.3937);              // centimeter to inch
-            else if (index == 2) num2 = (float) (num1 / 0.3048);              // meter to feet
-            else if (index == 3) num2 = (float) (num1 * 0.6214);              // kilometer to mi
-            else if (index == 4) num2 = (float) (num1 / 3.785);               // liter to gallon
-            else if (index == 5) num2 = (float) (num1 / 28.35);               // gram to ounce
-            else if (index == 6) num2 = (float) (num1 * 2.205);               // kilogram to pound
-            else if (index == 7) num2 = (float) (num1 / 3600);                // second to hour
-            else if (index == 8) num2 = (float) (num1 * 0.6214);              // kilometers per hour to miles per hour
-            else if (index == 9) num2 = (float) (num1 + 273.15);              // celsius to kelvin
+            if (index == 0) num2 = (float) ((num1 * 9.0 / 5.0) + 32.0);             // celsius to fahrenheit
+            else if (index == 1) num2 = (float) (num1 * 0.3937);                    // centimeter to inch
+            else if (index == 2) num2 = (float) (num1 / 0.3048);                    // meter to feet
+            else if ((index == 3) || (index == 8)) num2 = (float) (num1 * 0.6214);  // kilometer (per hour) to mi (per hour)
+            else if (index == 4) num2 = (float) (num1 / 3.785);                     // liter to gallon
+            else if (index == 5) num2 = (float) (num1 / 28.35);                     // gram to ounce
+            else if (index == 6) num2 = (float) (num1 * 2.205);                     // kilogram to pound
+            else if (index == 7) num2 = (float) (num1 / 3600);                      // second to hour
+            else if (index == 9) num2 = (float) (num1 + 273.15);                    // celsius to kelvin
         }
 
         return (num2);
