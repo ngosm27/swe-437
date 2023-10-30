@@ -1,4 +1,4 @@
-# How to Install and Run Conversion Project
+# How to Install and Run Assignment 7 Conversion Tests Project
 
 Maven is used in this assignment to automate the building process for ConversionTests.java. Before attempting to run the application, be sure to [download Maven](https://maven.apache.org/download.cgi) and follow the [installation instructions](https://maven.apache.org/install.html).
 
