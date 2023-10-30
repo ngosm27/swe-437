@@ -14,8 +14,6 @@ class ConversionTests {
     // selenium chrome web driver
     private WebDriver driver;
 
-    static int count = 9;
-
     // input values
     private  boolean buttonClicked;
     private String buttonVal;
@@ -167,7 +165,6 @@ class ConversionTests {
 
     @BeforeEach
     void setUp() {
-        count++;
         driver = new ChromeDriver();
         driver.get("https://cs.gmu.edu:8443/offutt/servlet/conversion");
     }
