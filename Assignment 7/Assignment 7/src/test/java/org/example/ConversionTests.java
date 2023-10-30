@@ -208,8 +208,6 @@ class ConversionTests {
     void test1() {
         buttonClicked = false;
         buttonVal = "Convert";
-        buttonClicked = true;
-        buttonVal = "Convert";
         performTest(1);
     }
 
@@ -217,8 +215,6 @@ class ConversionTests {
     void test2() {
         buttonClicked = true;
         buttonVal = "Clear form";
-        buttonClicked = true;
-        buttonVal = "Convert";
         performTest(2);
     }
 
@@ -522,10 +518,10 @@ class ConversionTests {
 
     // starts the actual test (enter values, click respective button and check results)
     public void performTest(int testIndex){
-        enterMeasurements(measurements[0]);
+        enterMeasurements(measurements[testIndex]);
         triggerEvent();
         findAllElem();
-        checkValues(expected[0]);
+        checkValues(expected[testIndex]);
     }
 
     // enter the measurements into the web driver
