@@ -106,7 +106,7 @@ public class conversionTest {
 
     @Test
     void doPostTest2() throws ServletException, IOException {
-        /*Step 2: Set all the parameters as 100, as per our first test input, then check if they match our expected output*/
+        /*Step 3: Set all the parameters as 100, as per our first test input, then check if they match our expected output*/
 
         when(request.getParameter("F")).thenReturn("0");
         servlet.doPost(request, reponse);
