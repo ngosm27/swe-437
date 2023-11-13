@@ -8,5 +8,5 @@ The build log should appear with the tester results shown at the end (in green).
 
 # Viewing Source Code
 
-To view the test source code, see `Assignment 9/src/test/java/org/example/conversionTest.java`
+To view the test source code, see `Assignment 9/src/test/java/org/example/Assign9_NaderiNgoNguyenTran.java`
 
