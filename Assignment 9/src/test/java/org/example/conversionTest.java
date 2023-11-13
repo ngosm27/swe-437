@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import static org.mockito.Mockito.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class conversionTest {
 
@@ -43,7 +47,7 @@ public class conversionTest {
 
     @Test
     void doPostTest1() throws ServletException, IOException {
-
+      
         /* Step 2: Set all the parameters as 100, as per our first test input */
         when(request.getParameter("F")).thenReturn("100");
         when(request.getParameter("C")).thenReturn("100");
@@ -85,7 +89,7 @@ public class conversionTest {
     @Test
     void doPostTest2() throws ServletException, IOException {
 
-        /* Step 2: Set all the parameters as empty, as per our first test input */
+        /* Step 3: Set all the parameters as empty, as per our first test input */
         when(request.getParameter("F")).thenReturn("");
         when(request.getParameter("C")).thenReturn("");
         when(request.getParameter("in")).thenReturn("");
