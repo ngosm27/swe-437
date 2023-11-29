@@ -83,4 +83,125 @@ class ThermostatTest {
         assertTrue (thermo.turnHeaterOn (settings));
         assertEquals(-7, thermo.getRunTime());  // changed
     }
+
+    @Test
+    public void testTTFTT() {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+
+        // Clause a: curTemp < dTemp - thresholdDiff : true
+        thermo.setCurrentTemp (63);
+        thermo.setThresholdDiff (5);
+        // Clause b: Override : true
+        thermo.setOverride (true);
+        // Clause c: curTemp < overTemp - thresholdDiff : false
+        thermo.setOverTemp (75);
+        // Clause d: timeSinceLastRun.greaterThan (minLag) : true
+        thermo.setMinLag (10);
+        thermo.setTimeSinceLastRun (12);
+        //Clause e: regulator: true
+        thermo.setRegulator(true);
+        assertTrue (thermo.turnHeaterOn (settings));
+    }
+    @Test
+    public void testFTFTT() {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+
+        // Clause a: curTemp < dTemp - thresholdDiff : false
+        thermo.setCurrentTemp (65);
+        thermo.setThresholdDiff (5);
+        // Clause b: Override : true
+        thermo.setOverride (true);
+        // Clause c: curTemp < overTemp - thresholdDiff : false
+        thermo.setOverTemp (69);
+        // Clause d: timeSinceLastRun.greaterThan (minLag) : true
+        thermo.setMinLag (10);
+        thermo.setTimeSinceLastRun (12);
+        //Clause e: regulator: true
+        thermo.setRegulator(true);
+        assertFalse (thermo.turnHeaterOn (settings));
+    }
+    @Test
+    public void testFTTTT() {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+
+        // Clause a: curTemp < dTemp - thresholdDiff : false
+        thermo.setCurrentTemp (65);
+        thermo.setThresholdDiff (5);
+        // Clause b: Override : true
+        thermo.setOverride (true);
+        // Clause c: curTemp < overTemp - thresholdDiff : true
+        thermo.setOverTemp (75);
+        // Clause d: timeSinceLastRun.greaterThan (minLag) : true
+        thermo.setMinLag (10);
+        thermo.setTimeSinceLastRun (12);
+        //Clause e: regulator: true
+        thermo.setRegulator(true);
+        assertTrue (thermo.turnHeaterOn (settings));
+    }
+    @Test
+    public void testFFTTT() {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+
+        // Clause a: curTemp < dTemp - thresholdDiff : false
+        thermo.setCurrentTemp (65);
+        thermo.setThresholdDiff (5);
+        // Clause b: Override : false
+        thermo.setOverride (false);
+        // Clause c: curTemp < overTemp - thresholdDiff : true
+        thermo.setOverTemp (75);
+        // Clause d: timeSinceLastRun.greaterThan (minLag) : true
+        thermo.setMinLag (10);
+        thermo.setTimeSinceLastRun (12);
+        //Clause e: regulator: true
+        thermo.setRegulator(true);
+        assertFalse (thermo.turnHeaterOn (settings));
+    }
+    @Test
+    public void testTTTFT() {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+
+        // Clause a: curTemp < dTemp - thresholdDiff : true
+        thermo.setCurrentTemp (63);
+        thermo.setThresholdDiff (5);
+        // Clause b: Override : true
+        thermo.setOverride (true);
+        // Clause c: curTemp < overTemp - thresholdDiff : true
+        thermo.setOverTemp (75);
+        // Clause d: timeSinceLastRun.greaterThan (minLag) : false
+        thermo.setMinLag (10);
+        thermo.setTimeSinceLastRun (9);
+        //Clause e: regulator: true
+        thermo.setRegulator(true);
+        assertFalse (thermo.turnHeaterOn (settings));
+    }
+    @Test
+    public void testTTTTF() {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+
+        // Clause a: curTemp < dTemp - thresholdDiff : true
+        thermo.setCurrentTemp (63);
+        thermo.setThresholdDiff (5);
+        // Clause b: Override : true
+        thermo.setOverride (true);
+        // Clause c: curTemp < overTemp - thresholdDiff : true
+        thermo.setOverTemp (75);
+        // Clause d: timeSinceLastRun.greaterThan (minLag) : true
+        thermo.setMinLag (10);
+        thermo.setTimeSinceLastRun (12);
+        //Clause e: regulator: true
+        thermo.setRegulator(false);
+        assertTrue (thermo.turnHeaterOn (settings));
+    }
 }
