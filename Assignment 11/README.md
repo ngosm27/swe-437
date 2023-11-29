@@ -8,5 +8,5 @@ The build log should appear with the tester results shown at the end (in green).
 
 # Viewing Source Code
 
-To view the test source code, see `Assignment 11/src/test/java/org/example/ConversionTest.java`
+To view the test source code, see `Assignment 11/src/test/java/org/example/updated_thermostat/ThermostatTest.java`
 
