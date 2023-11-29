@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\nguye\\SWE 437\\junit.jar"
+    ]
+}
