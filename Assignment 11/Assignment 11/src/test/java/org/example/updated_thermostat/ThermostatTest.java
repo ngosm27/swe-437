@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ThermostatTest {
 
@@ -32,8 +33,10 @@ class ThermostatTest {
         thermo.setTimeSinceLastRun (10);
         thermo.setMinLag (5);
         thermo.setOverride (true);
+        thermo.setRegulator(true);  // changed
         thermo.setOverTemp (72);
         assertTrue (thermo.turnHeaterOn (settings));
+        assertEquals (-2, thermo.getRunTime());
     }
 
     @Test
@@ -45,8 +48,10 @@ class ThermostatTest {
         thermo.setTimeSinceLastRun (7);
         thermo.setMinLag (7);
         thermo.setOverride (false);
+        thermo.setRegulator(false); // changed
         thermo.setOverTemp (70);
         assertFalse (thermo.turnHeaterOn (settings));
+        assertEquals (0, thermo.getRunTime());  // changed - runtime isn't set; default = 0
     }
 
     @Test
@@ -76,5 +81,6 @@ class ThermostatTest {
         thermo.setTimeSinceLastRun (12);
         // Run the test
         assertTrue (thermo.turnHeaterOn (settings));
+        assertEquals(-7, thermo.getRunTime());  // changed
     }
 }
